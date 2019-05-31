@@ -1,0 +1,28 @@
+PODS:
+  - SnapKit (4.0.1)
+  - SwiftKeychainWrapper (3.2.0)
+  - SwiftyGif (4.2.0)
+  - SwiftyJSON (4.2.0)
+
+DEPENDENCIES:
+  - SnapKit (~> 4.0.0)
+  - SwiftKeychainWrapper
+  - SwiftyGif
+  - SwiftyJSON (~> 4.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SnapKit
+    - SwiftKeychainWrapper
+    - SwiftyGif
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
+  SwiftyGif: a149bf84df23370592f3f075561ae02c8632a314
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+
+PODFILE CHECKSUM: df8cfdc1b9179503996181a8f2c811c2f2c65165
+
+COCOAPODS: 1.6.1
