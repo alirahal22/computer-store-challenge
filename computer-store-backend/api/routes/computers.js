@@ -4,18 +4,20 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Computer = require('../../models/computer');
 
+//get all computers
 router.get('/', (req, res) => {
     Computer.find()
-        .select('_id name price modelNumber imagePath cpu rams brand')
+        .select('name price modelNumber imageURL cpu rams brand')
         .exec()
         .then(docs => {
+            console.log(docs)
             res.status(200).json(docs.map(doc => {
                 return {
                     _id: doc._id,
                     name: doc.name,
                     price: doc.price,
                     modelNumber: doc.modelNumber,
-                    imagePath: "some_image_path",
+                    imageURL: "some_image_path",
                     cpu: doc.cpu,
                     rams: doc.rams,
                     brand: doc.brand,
@@ -30,16 +32,130 @@ router.get('/', (req, res) => {
             res.status(500).json({error: error})
         });
 });
+
+//get different cpus available
+router.get('/cpus', (req, res) => {
+    console.log('Fetching CPUs')
+    Computer.find()
+        .exec()
+        .then(docs => {
+            const items = []
+            for (doc of docs){
+                if (!items.includes(doc.cpu)) {
+                    items.push(doc.cpu)
+                }
+            }
+            res.status(200).json(items)
+        })
+        .catch(error => {
+            res.status(500).json({error: error})
+        });
+});
+//get different brands available
+router.get('/brands', (req, res) => {
+    console.log('Fetching brands')
+    Computer.find()
+        .exec()
+        .then(docs => {
+            const items = []
+            for (doc of docs){
+                if (!items.includes(doc.brand)) {
+                    items.push(doc.brand)
+                }
+            }
+            res.status(200).json(items)
+        })
+        .catch(error => {
+            res.status(500).json({error: error})
+        });
+});
+
+router.post('/search/filter/page/:pageNumber', (req, res) => {
+    console.log("Filtering computers")
+    const filters = {}
+    for (filter of req.body) {
+        //later get value type for filtering with more properties
+        if (filter.propName === "rams") {
+            filters[filter.propName] = filter.value
+        } else {
+            filters[filter.propName] = new RegExp(filter.value, 'i')
+        }
+    }
+    console.log(filters)
+    const pageSize = 5
+    const pageNumber = req.params.pageNumber
+    Computer.find( filters )
+        .sort('_id')
+        .skip(pageSize * (pageNumber - 1))
+        .limit(pageSize)
+        .exec()
+        .then(docs => {
+            res.status(200).json(docs.map(doc => {
+                return {
+                    _id: doc._id,
+                    name: doc.name,
+                    price: doc.price,
+                    modelNumber: doc.modelNumber,
+                    imageURL: "some_image_path",
+                    cpu: doc.cpu,
+                    rams: doc.rams,
+                    brand: doc.brand,
+                    request: {
+                        type: 'GET',
+                        url: 'http://localhost:3000/computers/' + doc._id
+                    }
+                }
+            }));
+        })
+        .catch(error => {
+            res.status(500).json({error: error})
+        });
+});
+
+router.get('/search/:searchString/page/:pageNumber', (req, res) => {
+    const searchString = req.params.searchString
+    const searchKey = new RegExp(searchString, 'i')
+    const pageSize = 5
+    const pageNumber = req.params.pageNumber
+    Computer.find({name: searchKey})
+        .sort('_id')
+        .skip(pageSize * (pageNumber - 1))
+        .limit(pageSize)
+        .exec()
+        .then(docs => {
+            res.status(200).json(docs.map(doc => {
+                return {
+                    _id: doc._id,
+                    name: doc.name,
+                    price: doc.price,
+                    modelNumber: doc.modelNumber,
+                    imageURL: "some_image_path",
+                    cpu: doc.cpu,
+                    rams: doc.rams,
+                    brand: doc.brand,
+                    request: {
+                        type: 'GET',
+                        url: 'http://localhost:3000/computers/' + doc._id
+                    }
+                }
+            }));
+        })
+        .catch(error => {
+            res.status(500).json({error: error})
+        });
+});
+
+
 router.post('/', (req, res) => {
     const computer = new Computer({
         _id: new mongoose.Types.ObjectId(),
-        name: req.body.name,
+        name: capitalizeFirstLetter(req.body.name),
         price: req.body.price,
-        modelNumber: req.body.modelNumber,
-        imagePath: "some_image_path",
+        modelNumber: capitalizeFirstLetter(req.body.modelNumber),
+        imageURL: "some_image_path",
         cpu: req.body.cpu,
         rams: req.body.rams,
-        brand: req.body.brand
+        brand: capitalizeFirstLetter(req.body.brand)
     })
     computer.save()
         .then(result => {
@@ -50,7 +166,7 @@ router.post('/', (req, res) => {
                     name: result.name,
                     price: result.price,
                     modelNumber: result.modelNumber,
-                    imagePath: "some_image_path",
+                    imageURL: "some_image_path",
                     cpu: result.cpu,
                     rams: result.rams,
                     brand: result.brand,
@@ -127,5 +243,42 @@ router.delete('/:computerId', (req, res) => {
             res.status(500).json({error: error});
         })
 });
+
+router.get('/page/:pageNumber', (req, res) => {
+    const pageSize = 5
+    const pageNumber = req.params.pageNumber
+    Computer.find()
+        .sort('_id')
+        .skip(pageSize * (pageNumber - 1))
+        .limit(pageSize)
+        .select('name price modelNumber imageURL cpu rams brand')
+        .exec()
+        .then(docs => {
+            res.status(200).json(docs.map(doc => {
+                return {
+                    _id: doc._id,
+                    name: doc.name,
+                    price: doc.price,
+                    modelNumber: doc.modelNumber,
+                    imageURL: "some_image_path",
+                    cpu: doc.cpu,
+                    rams: doc.rams,
+                    brand: doc.brand,
+                    request: {
+                        type: 'GET',
+                        url: 'http://localhost:3000/computers/' + doc._id
+                    }
+                }
+            }));
+        })
+        .catch(error => {
+            res.status(500).json({error: error})
+        });
+});
+
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 module.exports = router;

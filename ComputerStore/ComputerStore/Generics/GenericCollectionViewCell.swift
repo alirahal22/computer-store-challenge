@@ -1,8 +1,8 @@
 //
-//  BaseCollectionViewCell.swift
+//  GenericCollectionViewCell.swift
 //  ComputerStore
 //
-//  Created by Ali Rahal on 5/31/19.
+//  Created by Ali Rahal on 6/2/19.
 //  Copyright © 2019 Ali Rahal. All rights reserved.
 //
 
@@ -21,6 +21,7 @@ class GenericCollectionViewCell<U>: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     func setUpViews() {
+        print(setUpViews())
         
     }
 }

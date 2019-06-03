@@ -13,154 +13,58 @@ import SnapKit
 
 class MainViewController: UIViewController {
     
-    //prepare all possible controllers as lazy var
     lazy var computersViewController = ComputersViewController()
     var activeController: UIViewController!
+    var delegate: MainViewControllerDelegate!
     
-    let menuContainer = UIView()
+    let filtersContainer = UIView()
     let activeViewContainer = UIView()
     
     var filtersViewController: FiltersViewController!
     var filterViewIsVisible = false
     let filtersSlideAnimationDuration = 0.25
     
+    //Constraints
+    var filtersContainerWidth: CGFloat!
     
-    
-    let navigationBarTitleLabel = UILabel()
-    let navigationBarButton = UIButton(type: UIButtonType.custom)
-    let navigationBar: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.lightGray
-        return view
-    }()
-    
-    let centerLabel: UILabel = {
-        let label = UILabel()
-        label.text = "King Rahal"
-        return label
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        navigationController?.title = "Home"
+        view.backgroundColor = UIColor.clear
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addComputerButtonPressed))
+        
         activeController = computersViewController
+        self.delegate = computersViewController
         setUpContainers()
         
         let panGestureRecognizser = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)) )
         view.addGestureRecognizer(panGestureRecognizser)
     }
     
-    @objc func handlePan(_ recognizer: UIPanGestureRecognizer){
-        let translation = recognizer.translation(in: self.view)
-        
-        
-        if recognizer.state == .ended || recognizer.state == .failed || recognizer.state == .cancelled {
-            
-            if filterViewIsVisible {
-                //hide the menu when dragging left
-                if translation.x < -10 {
-                    navigationBarButtonPressed()
-                }
-            } else {
-                //show the menu when dragging right more than 100
-                if translation.x > 100 {
-                    navigationBarButtonPressed()
-                } else {
-                    //hide menu when drag is small
-                    hideMenu()
-                }
-            }
-            return
-        }
-        
-        
-        if !filterViewIsVisible && translation.x > 0 && translation.x <= menuContainerWidth {
-            menuContainer.snp.updateConstraints { (make) in
-                make.left.equalTo(-menuContainerWidth + translation.x)
-            }
-            navigationBar.snp.updateConstraints { (make) in
-                make.left.equalTo(translation.x)
-            }
-            activeViewContainer.snp.updateConstraints { (make) in
-                make.left.equalTo(translation.x)
-            }
-        }
-        
-        if filterViewIsVisible && translation.x < 0 && translation.x >= -menuContainerWidth {
-            menuContainer.snp.updateConstraints { (make) in
-                make.left.equalTo(translation.x)
-            }
-            navigationBar.snp.updateConstraints { (make) in
-                make.left.equalTo(menuContainerWidth + translation.x)
-            }
-            activeViewContainer.snp.updateConstraints { (make) in
-                make.left.equalTo(menuContainerWidth + translation.x)
-            }
-        }
-        self.menuContainer.superview?.layoutIfNeeded()
-        self.navigationBar.superview?.layoutIfNeeded()
+    lazy var createComputerViewController = CreateComputerViewController()
+    @objc func addComputerButtonPressed() {
+        self.navigationController?.pushViewController(createComputerViewController, animated: true)
     }
-    
-    
-    
-    let navigationBarHeight = 60
-    var menuContainerWidth: CGFloat!
+
+    //MARK: UI SetUp
     func setUpContainers() {
-        
-        //Set Up Custom Navigation Bar
-        view.addSubview(navigationBar)
-        navigationBar.snp.makeConstraints { (make) in
-            make.left.top.width.equalToSuperview()
-            make.height.equalTo(navigationBarHeight)
-        }
-        setUpNavigationBar()
-        
         
         view.addSubview(activeViewContainer)
         activeViewContainer.snp.makeConstraints { (make) in
-            make.bottom.left.width.equalToSuperview()
-            make.top.equalTo(navigationBar.snp.bottom)
+            make.top.left.bottom.right.equalToSuperview()
         }
         setUpActiveContainer()
-        
-        
-        view.addSubview(menuContainer)
-        menuContainerWidth = view.frame.width * 0.8
-        menuContainer.snp.makeConstraints { (make) in
+
+        view.addSubview(filtersContainer)
+        filtersContainerWidth = view.frame.width * 0.8
+        filtersContainer.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview()
-            make.width.equalTo(menuContainerWidth)
-            make.left.equalTo(-menuContainerWidth)
+            make.width.equalTo(filtersContainerWidth)
+            make.left.equalTo(-filtersContainerWidth)
         }
-        setUpMenuContainer()
+        setUpFiltersContainer()
     }
-    
-    func setUpNavigationBar() {
-        
-        let buttonTopConstraint = 12
-        
-        navigationBar.addSubview(navigationBarButton)
-        if let image = UIImage(named: "hamburger_menu") {
-            navigationBarButton.setImage(image, for: UIControlState.normal)
-        }
-        navigationBarButton.addTarget(self, action: #selector(navigationBarButtonPressed), for: UIControlEvents.touchUpInside)
-        navigationBarButton.snp.makeConstraints { (make) in
-            make.height.width.equalTo(navigationBarHeight - 8)
-            make.left.equalTo(4)
-            make.top.equalTo(buttonTopConstraint)
-        }
-        
-        
-        navigationBar.addSubview(navigationBarTitleLabel)
-        navigationBarTitleLabel.font = UIFont.systemFont(ofSize: 28)
-        navigationBarTitleLabel.textAlignment = .center
-        navigationBarTitleLabel.text = "Home"
-        navigationBarTitleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(buttonTopConstraint)
-            make.height.equalTo(navigationBarHeight - 8)
-            make.width.equalToSuperview()
-        }
-    }
-    
     
     func setUpActiveContainer() {
         addChildViewController(activeController)
@@ -174,29 +78,57 @@ class MainViewController: UIViewController {
     
 }
 
-//Side Menu Delegate and setup functions
+//MARK: - Filters Container SetUp
 extension MainViewController: FiltersViewControllerDelegate {
-    func didApplyFilters(filters: String) {
-        navigationBarTitleLabel.text = filters
-//        switchController(from: activeController, to: UIViewController())
-        navigationBarButtonPressed()
-    }
     
-    func setUpMenuContainer() {
+    func setUpFiltersContainer() {
         filtersViewController = FiltersViewController()
         addChildViewController(filtersViewController)
         filtersViewController.delegate = self
-        menuContainer.addSubview(filtersViewController.view)
+        filtersContainer.addSubview(filtersViewController.view)
         
         filtersViewController.view.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+    }
+    //MARK: - Swipe Animation
+    @objc func handlePan(_ recognizer: UIPanGestureRecognizer){
+        filtersViewController.ramsFilterField.textField.endEditing(true)
+        let translation = recognizer.translation(in: self.view)
         
-        menuContainer.backgroundColor = UIColor.cyan
         
+        if recognizer.state == .ended || recognizer.state == .failed || recognizer.state == .cancelled {
+            
+            if filterViewIsVisible {
+                //hide the menu when dragging left
+                if translation.x < -10 {
+                    toggleFilters()
+                }
+            } else {
+                //show the menu when dragging right more than 100
+                if translation.x > 100 {
+                    toggleFilters()
+                } else {
+                    //hide menu when drag is small
+                    hideMenu()
+                }
+            }
+            return
+        }
+        if !filterViewIsVisible && translation.x > 0 && translation.x <= filtersContainerWidth {
+            filtersContainer.snp.updateConstraints { (make) in
+                make.left.equalTo(-filtersContainerWidth + translation.x)
+            }
+        }
+        if filterViewIsVisible && translation.x < 0 && translation.x >= -filtersContainerWidth {
+            filtersContainer.snp.updateConstraints { (make) in
+                make.left.equalTo(translation.x)
+            }
+        }
+        self.filtersContainer.superview?.layoutIfNeeded()
     }
     
-    @objc func navigationBarButtonPressed() {
+    @objc func toggleFilters() {
         
         if filterViewIsVisible {
             hideMenu()
@@ -208,79 +140,63 @@ extension MainViewController: FiltersViewControllerDelegate {
     
     func showMenu() {
         UIView.animate(withDuration: filtersSlideAnimationDuration) {
-            self.menuContainer.snp.updateConstraints({ (make) in
+            self.filtersContainer.snp.updateConstraints({ (make) in
                 make.left.equalToSuperview()
             })
-            
-            self.navigationBar.snp.updateConstraints({ (make) in
-                make.left.equalTo(self.menuContainerWidth)
-            })
-            self.activeViewContainer.snp.updateConstraints({ (make) in
-                make.left.equalTo(self.menuContainerWidth)
-            })
-            self.menuContainer.superview?.layoutIfNeeded()
-            self.navigationBar.superview?.layoutIfNeeded()
+            self.filtersContainer.superview?.layoutIfNeeded()
         }
         
-        //hide the title label
-        UIView.animate(withDuration: filtersSlideAnimationDuration / 4) {
-            self.navigationBarTitleLabel.layer.opacity = 0
-        }
     }
     
     func hideMenu() {
         UIView.animate(withDuration: filtersSlideAnimationDuration) {
-            self.menuContainer.snp.updateConstraints({ (make) in
-                make.left.equalTo(-self.menuContainerWidth)
+            self.filtersContainer.snp.updateConstraints({ (make) in
+                make.left.equalTo(-self.filtersContainerWidth)
             })
-            self.navigationBar.snp.updateConstraints({ (make) in
-                make.left.equalToSuperview()
-            })
-            self.activeViewContainer.snp.updateConstraints({ (make) in
-                make.left.equalToSuperview()
-            })
-            self.menuContainer.superview?.layoutIfNeeded()
-            self.navigationBar.superview?.layoutIfNeeded()
-            
-            
+            self.filtersContainer.superview?.layoutIfNeeded()
         }
-        //show title label
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + filtersSlideAnimationDuration/2) {
-            UIView.animate(withDuration: self.filtersSlideAnimationDuration / 4) {
-                self.navigationBarTitleLabel.layer.opacity = 1
-            }
-        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        filtersViewController.ramsFilterField.textField.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
+    
+    //MARK: - FiltersViewControllerDelegate
+    func didApplyFilters(filters: [String: Any]) {
+        delegate.applyFilters(filters: filters)
+        toggleFilters()
+    }
+    
+    func didResetFilters() {
+        delegate.resetFilters()
+        toggleFilters()
     }
     
 }
 
-//Switching Controllers inside ActiveViewContainer
-//extension MainViewController {
-//    func switchController(from oldController: UIViewController,to newController: MenuOption) {
-//        var controller: UIViewController!
-//        switch newController {
-//        case .Home:
-//            controller = homeViewController
-//        case .Grades:
-//            controller = activeCoursesViewController
-//        case .Archive:
-//            controller = gradesArchiveViewController
-//        case .Exams:
-//            controller = examPlacesViewController
-//        case .Schedule:
-//            controller = activeCoursesViewController
-//        case .AboutUs:
-//            controller = activeCoursesViewController
-//        }
-//        //        addChildViewController(controller)
-//        //        activeViewContainer.addSubview(controller.view)
-//        //        controller.view.snp.makeConstraints { (make) in
-//        //            make.edges.equalToSuperview()
-//        //        }
-//        //
-//        print(newController.rawValue)
-//        activeController = controller
-//        setUpActiveContainer()
-//    }
-//
-//}
+
+
+protocol MainViewControllerDelegate {
+    func applyFilters(filters: [String: Any])
+    func resetFilters()
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

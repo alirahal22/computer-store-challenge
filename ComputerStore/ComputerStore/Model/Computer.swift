@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+class Computer: NSObject, Codable {
+    var _id: String?
+    var name: String?
+    var price: Float?
+    var brand: String?
+    var modelNumber: String?
+    var imageURL: String?
+    var cpu: String?
+    var rams: Int?
+}

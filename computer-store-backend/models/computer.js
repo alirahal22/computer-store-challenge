@@ -5,7 +5,7 @@ const computerSchema = mongoose.Schema({
     name: {type: String, required: true},
     price: {type: Number, required: true},
     modelNumber: {type: String, required: true},
-	imagePath: String,
+	imageURL: String,
 	cpu: {type: String, required: true},
 	rams: {type: Number, required: true},
 	brand: {type: String, required: true},

@@ -9,21 +9,55 @@
 /* Begin PBXBuildFile section */
 		76701CCB4E379AFF469E041C /* Pods_ComputerStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2F4429B03804D96382480B /* Pods_ComputerStore.framework */; };
 		9F9DA9D922A15FEB0062819B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DA9D822A15FEB0062819B /* AppDelegate.swift */; };
-		9F9DA9DB22A15FEB0062819B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DA9DA22A15FEB0062819B /* ViewController.swift */; };
-		9F9DA9DE22A15FEB0062819B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F9DA9DC22A15FEB0062819B /* Main.storyboard */; };
 		9F9DA9E022A15FED0062819B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F9DA9DF22A15FED0062819B /* Assets.xcassets */; };
 		9F9DA9E322A15FED0062819B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F9DA9E122A15FED0062819B /* LaunchScreen.storyboard */; };
+		9F9DA9F122A1684B0062819B /* LoginTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DA9F022A1684B0062819B /* LoginTextFieldView.swift */; };
+		9F9DA9F322A168590062819B /* RoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DA9F222A168590062819B /* RoundedCornersView.swift */; };
+		9F9DA9F622A169300062819B /* eye_reverse.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F9DA9F422A169300062819B /* eye_reverse.gif */; };
+		9F9DA9F722A169300062819B /* eye.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F9DA9F522A169300062819B /* eye.gif */; };
+		9F9DA9F922A169D50062819B /* Computer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DA9F822A169D50062819B /* Computer.swift */; };
+		9F9DA9FD22A16A140062819B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DA9FC22A16A140062819B /* LoginViewController.swift */; };
+		9F9DAA0122A16A390062819B /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F9DA9FF22A16A380062819B /* Poppins-Regular.ttf */; };
+		9F9DAA0222A16A390062819B /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F9DAA0022A16A390062819B /* Poppins-Bold.ttf */; };
+		9F9DAA0422A172720062819B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAA0322A172720062819B /* Extensions.swift */; };
+		9F9DAA0622A1749C0062819B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAA0522A1749C0062819B /* MainViewController.swift */; };
+		9F9DAA0822A174EE0062819B /* ComputersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAA0722A174EE0062819B /* ComputersViewController.swift */; };
+		9F9DAA0B22A1751A0062819B /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAA0A22A1751A0062819B /* FiltersViewController.swift */; };
+		9F9DAA0F22A17B320062819B /* ComputerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAA0E22A17B320062819B /* ComputerViewController.swift */; };
+		9F9DAA1222A17C490062819B /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAA1122A17C490062819B /* APIServices.swift */; };
+		9F9DAA1422A17E2E0062819B /* ComputerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAA1322A17E2E0062819B /* ComputerCell.swift */; };
+		9F9DAA1822A2A3BD0062819B /* SpecLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAA1722A2A3BD0062819B /* SpecLabel.swift */; };
+		9F9DAA1B22A334650062819B /* GenericCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DAA1A22A334650062819B /* GenericCollectionViewCell.swift */; };
+		9FB507AD22A4553E004F27E7 /* CreateComputerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB507AC22A4553E004F27E7 /* CreateComputerViewController.swift */; };
+		9FB507AF22A46B8A004F27E7 /* EditingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB507AE22A46B8A004F27E7 /* EditingTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		05EBC8E547EBB10EC6945C4B /* Pods-ComputerStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComputerStore.release.xcconfig"; path = "Target Support Files/Pods-ComputerStore/Pods-ComputerStore.release.xcconfig"; sourceTree = "<group>"; };
 		9F9DA9D522A15FEB0062819B /* ComputerStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComputerStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9DA9D822A15FEB0062819B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9F9DA9DA22A15FEB0062819B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9F9DA9DD22A15FEB0062819B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F9DA9DF22A15FED0062819B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F9DA9E222A15FED0062819B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F9DA9E422A15FED0062819B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F9DA9F022A1684B0062819B /* LoginTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldView.swift; sourceTree = "<group>"; };
+		9F9DA9F222A168590062819B /* RoundedCornersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornersView.swift; sourceTree = "<group>"; };
+		9F9DA9F422A169300062819B /* eye_reverse.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = eye_reverse.gif; sourceTree = "<group>"; };
+		9F9DA9F522A169300062819B /* eye.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = eye.gif; sourceTree = "<group>"; };
+		9F9DA9F822A169D50062819B /* Computer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Computer.swift; sourceTree = "<group>"; };
+		9F9DA9FC22A16A140062819B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9F9DA9FF22A16A380062819B /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		9F9DAA0022A16A390062819B /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		9F9DAA0322A172720062819B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9F9DAA0522A1749C0062819B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9F9DAA0722A174EE0062819B /* ComputersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputersViewController.swift; sourceTree = "<group>"; };
+		9F9DAA0A22A1751A0062819B /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		9F9DAA0E22A17B320062819B /* ComputerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerViewController.swift; sourceTree = "<group>"; };
+		9F9DAA1122A17C490062819B /* APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
+		9F9DAA1322A17E2E0062819B /* ComputerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerCell.swift; sourceTree = "<group>"; };
+		9F9DAA1722A2A3BD0062819B /* SpecLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecLabel.swift; sourceTree = "<group>"; };
+		9F9DAA1A22A334650062819B /* GenericCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCollectionViewCell.swift; sourceTree = "<group>"; };
+		9FB507AC22A4553E004F27E7 /* CreateComputerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateComputerViewController.swift; sourceTree = "<group>"; };
+		9FB507AE22A46B8A004F27E7 /* EditingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTextField.swift; sourceTree = "<group>"; };
 		AA2F4429B03804D96382480B /* Pods_ComputerStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ComputerStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E685096939038800DEBD046D /* Pods-ComputerStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComputerStore.debug.xcconfig"; path = "Target Support Files/Pods-ComputerStore/Pods-ComputerStore.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,14 +103,127 @@
 		9F9DA9D722A15FEB0062819B /* ComputerStore */ = {
 			isa = PBXGroup;
 			children = (
+				9F9DAA1922A334430062819B /* Generics */,
+				9F9DAA1022A17C360062819B /* Services */,
+				9F9DA9EA22A166B60062819B /* assets */,
+				9F9DA9EF22A168230062819B /* AppModules */,
+				9F9DA9ED22A166E20062819B /* Model */,
+				9F9DA9EC22A166DC0062819B /* View */,
+				9F9DA9EB22A166D30062819B /* Controller */,
 				9F9DA9D822A15FEB0062819B /* AppDelegate.swift */,
-				9F9DA9DA22A15FEB0062819B /* ViewController.swift */,
-				9F9DA9DC22A15FEB0062819B /* Main.storyboard */,
 				9F9DA9DF22A15FED0062819B /* Assets.xcassets */,
 				9F9DA9E122A15FED0062819B /* LaunchScreen.storyboard */,
 				9F9DA9E422A15FED0062819B /* Info.plist */,
 			);
 			path = ComputerStore;
+			sourceTree = "<group>";
+		};
+		9F9DA9EA22A166B60062819B /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DA9FE22A16A260062819B /* fonts */,
+				9F9DA9EE22A167E90062819B /* gifs */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		9F9DA9EB22A166D30062819B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DA9FA22A169F50062819B /* PreLogin */,
+				9F9DA9FB22A169FD0062819B /* Main */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9F9DA9EC22A166DC0062819B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DAA1322A17E2E0062819B /* ComputerCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9F9DA9ED22A166E20062819B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DA9F822A169D50062819B /* Computer.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9F9DA9EE22A167E90062819B /* gifs */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DA9F422A169300062819B /* eye_reverse.gif */,
+				9F9DA9F522A169300062819B /* eye.gif */,
+			);
+			path = gifs;
+			sourceTree = "<group>";
+		};
+		9F9DA9EF22A168230062819B /* AppModules */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DA9F022A1684B0062819B /* LoginTextFieldView.swift */,
+				9F9DA9F222A168590062819B /* RoundedCornersView.swift */,
+				9F9DAA0322A172720062819B /* Extensions.swift */,
+				9F9DAA1722A2A3BD0062819B /* SpecLabel.swift */,
+				9FB507AE22A46B8A004F27E7 /* EditingTextField.swift */,
+			);
+			path = AppModules;
+			sourceTree = "<group>";
+		};
+		9F9DA9FA22A169F50062819B /* PreLogin */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DA9FC22A16A140062819B /* LoginViewController.swift */,
+			);
+			path = PreLogin;
+			sourceTree = "<group>";
+		};
+		9F9DA9FB22A169FD0062819B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DAA0A22A1751A0062819B /* FiltersViewController.swift */,
+				9F9DAA0922A174F30062819B /* AppControllers */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		9F9DA9FE22A16A260062819B /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DAA0022A16A390062819B /* Poppins-Bold.ttf */,
+				9F9DA9FF22A16A380062819B /* Poppins-Regular.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		9F9DAA0922A174F30062819B /* AppControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DAA0522A1749C0062819B /* MainViewController.swift */,
+				9F9DAA0722A174EE0062819B /* ComputersViewController.swift */,
+				9F9DAA0E22A17B320062819B /* ComputerViewController.swift */,
+				9FB507AC22A4553E004F27E7 /* CreateComputerViewController.swift */,
+			);
+			path = AppControllers;
+			sourceTree = "<group>";
+		};
+		9F9DAA1022A17C360062819B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DAA1122A17C490062819B /* APIServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9F9DAA1922A334430062819B /* Generics */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DAA1A22A334650062819B /* GenericCollectionViewCell.swift */,
+			);
+			path = Generics;
 			sourceTree = "<group>";
 		};
 		EAE2126B461CE44695422F86 /* Pods */ = {
@@ -85,7 +232,6 @@
 				E685096939038800DEBD046D /* Pods-ComputerStore.debug.xcconfig */,
 				05EBC8E547EBB10EC6945C4B /* Pods-ComputerStore.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -150,8 +296,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F9DA9E322A15FED0062819B /* LaunchScreen.storyboard in Resources */,
+				9F9DAA0222A16A390062819B /* Poppins-Bold.ttf in Resources */,
+				9F9DA9F622A169300062819B /* eye_reverse.gif in Resources */,
+				9F9DA9F722A169300062819B /* eye.gif in Resources */,
 				9F9DA9E022A15FED0062819B /* Assets.xcassets in Resources */,
-				9F9DA9DE22A15FEB0062819B /* Main.storyboard in Resources */,
+				9F9DAA0122A16A390062819B /* Poppins-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,8 +312,6 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ComputerStore/Pods-ComputerStore-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -173,8 +320,6 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
@@ -191,15 +336,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ComputerStore-checkManifestLockResult.txt",
 			);
@@ -215,22 +356,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F9DA9DB22A15FEB0062819B /* ViewController.swift in Sources */,
+				9F9DAA1222A17C490062819B /* APIServices.swift in Sources */,
+				9F9DAA0822A174EE0062819B /* ComputersViewController.swift in Sources */,
+				9F9DA9F122A1684B0062819B /* LoginTextFieldView.swift in Sources */,
+				9F9DAA1B22A334650062819B /* GenericCollectionViewCell.swift in Sources */,
+				9F9DA9FD22A16A140062819B /* LoginViewController.swift in Sources */,
+				9F9DAA1822A2A3BD0062819B /* SpecLabel.swift in Sources */,
+				9F9DAA0B22A1751A0062819B /* FiltersViewController.swift in Sources */,
+				9F9DA9F922A169D50062819B /* Computer.swift in Sources */,
+				9F9DAA1422A17E2E0062819B /* ComputerCell.swift in Sources */,
 				9F9DA9D922A15FEB0062819B /* AppDelegate.swift in Sources */,
+				9F9DA9F322A168590062819B /* RoundedCornersView.swift in Sources */,
+				9F9DAA0F22A17B320062819B /* ComputerViewController.swift in Sources */,
+				9F9DAA0422A172720062819B /* Extensions.swift in Sources */,
+				9F9DAA0622A1749C0062819B /* MainViewController.swift in Sources */,
+				9FB507AF22A46B8A004F27E7 /* EditingTextField.swift in Sources */,
+				9FB507AD22A4553E004F27E7 /* CreateComputerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9F9DA9DC22A15FEB0062819B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9F9DA9DD22A15FEB0062819B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9F9DA9E122A15FED0062819B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -364,6 +511,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YLFAB4CZ27;
 				INFOPLIST_FILE = ComputerStore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,6 +531,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YLFAB4CZ27;
 				INFOPLIST_FILE = ComputerStore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
